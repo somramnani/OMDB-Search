@@ -18,7 +18,7 @@ def favorites():
 @app.route('/favorites')
 def favorites():
     """if query params are passed, write movie to json file."""
-    return render_template('favorites.html')
+    return render_template('templates/favorites.html')
 
 @app.route('/search', methods=['POST'])
 def search():

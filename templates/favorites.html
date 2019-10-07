@@ -1,8 +1,36 @@
-<h1>Movie search</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
 
-<a href="/">Home</a>
-<h2>Favorites</h2>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper teal">
+        <a href="https://www.omdbapi.com/" target="_blank" class="brand-logo">
+          OMDB API
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Home</a></li>
+          <li><a href="/favorites">Favorites</a></li>
+        </ul>
+      </div>
+    </nav>
 
-{% for movie in favorites %}
-  <p>{{ movie["title"] }}</p>
-{% endfor %}
+    <h2 class="center-align">Favorites</h2>
+
+    {% for movie in favorites %}
+    <p>{{ movie["title"] }}</p>
+    {% endfor %}
+  </body>
+</html>
