@@ -101,12 +101,13 @@
               var actors = response.Actors;
               var plot = response.Plot;
               var img = response.Poster;
+              $("#movie-view").text(JSON.stringify(response));
             });
           });
         </script>
       </div>
     </div>
-    <!-- We'll be dumping our JSON contents in here -->
+    <!-- JSON contents goes here -->
     <div id="movie-view"></div>
   </body>
 </html>
