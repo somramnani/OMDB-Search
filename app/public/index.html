@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="/localmovies" />
+    <title>OMDB</title>
+
+    <!-- 
+      MATERIALIZE CDN 
+    -->
+    <!---------------------------------------------------------------------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!---------------------------------------------------------------------------------------------->
+
+    <!-- 
+      GOOGLE FONTS 
+    -->
+    <!---------------------------------------------------------------------------------------------->
+    <link
+      href="https://fonts.googleapis.com/css?family=Patua+One&display=swap"
+      rel="stylesheet"
+    />
+    <!---------------------------------------------------------------------------------------------->
+
+    <link rel="stylesheet" href="/styles" />
+  </head>
+  <body>
+    <div class="top">
+      <nav>
+        <div class="nav-wrapper black">
+          <a href="#" class="brand-logo">
+            <i class="material-icons">movie</i>
+            OMDB
+          </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/">HOME</a></li>
+            <li><a href="">FAVORITES</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        <h1 class="center-align movietitle">MOVIE SEARCH</h1>
+
+        <!-- This form will be where users input data about the movies -->
+        <form id="movie-form">
+          <div class="input-field grey-text text-lighten-3 ">
+            <input
+              type="text"
+              class="grey-text text-lighten-3"
+              id="movie-input"
+            />
+            <label for="movie-input" class="grey-text text-lighten-3"
+              >Search for a movie</label
+            >
+          </div>
+
+          <!-- This button will trigger our AJAX call -->
+          <input
+            onclick="window.location.href = '#movie-view';"
+            id="find-movie"
+            type="submit"
+            value="Movie Search"
+          />
+        </form>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+          // This .on("click") function will trigger the AJAX Call
+          $("#find-movie").on("click", function(event) {
+            // event.preventDefault() can be used to prevent an event's default behavior.
+            // Here, it prevents the submit button from trying to submit a form when clicked
+            event.preventDefault();
+
+            // Here we grab the text from the input box
+            var movie = $("#movie-input").val();
+
+            // Here we construct our URL
+            var queryURL =
+              "https://www.omdbapi.com/?t=" +
+              movie +
+              "&y=&plot=short&apikey=trilogy";
+
+            $.ajax({
+              url: queryURL,
+              method: "GET"
+            }).then(function(response) {
+              var title = response.Title;
+              var year = response.Year;
+              var runTime = response.Runtime;
+              var genre = response.Genre;
+              var actors = response.Actors;
+              var plot = response.Plot;
+              var img = response.Poster;
+            });
+          });
+        </script>
+      </div>
+    </div>
+    <!-- We'll be dumping our JSON contents in here -->
+    <div id="movie-view"></div>
+  </body>
+</html>
