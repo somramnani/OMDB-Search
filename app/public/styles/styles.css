@@ -1,6 +1,7 @@
 html {
   scroll-behavior: smooth;
   height: 100%;
+  font-family: "Patua One", cursive;
 }
 
 .top {
@@ -12,7 +13,6 @@ html {
   opacity: 1;
   background-image: url("/movie");
   width: 100%;
-  font-family: "Patua One", cursive;
 }
 
 #movie-input {
@@ -24,5 +24,17 @@ html {
 .movietitle {
   color: white;
   letter-spacing: 20px;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
+}
+#find-move {
+  font-family: "Patua One", cursive;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+#movie-view {
+  height: 750px;
 }

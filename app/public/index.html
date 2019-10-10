@@ -65,21 +65,24 @@
           </div>
 
           <!-- This button will trigger the AJAX call -->
-          <input
+          <button
             onclick="window.location.href = '#movie-view';"
+            class="btn waves-effect waves-light grey lighten-3 black-text hoverable"
             id="find-movie"
             type="submit"
-            value="Movie Search"
-          />
+            name="action"
+          >
+            Search
+            <i class="material-icons right">send</i>
+          </button>
         </form>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
           // This .on("click") function will trigger the AJAX Call
           $("#find-movie").on("click", function(event) {
-            // event.preventDefault() can be used to prevent an event's default behavior.
-            // Here, it prevents the submit button from trying to submit a form when clicked
             event.preventDefault();
+            $("#movie-view").html("");
 
             // Grabs the users inpit
             var movie = $("#movie-input").val();
@@ -93,20 +96,39 @@
               url: queryURL,
               method: "GET"
             }).then(function(response) {
+              // Grabs all the information from the JSON and stores it in a variable
               var title = response.Title;
               var year = response.Year;
               var runTime = response.Runtime;
               var genre = response.Genre;
               var actors = response.Actors;
               var plot = response.Plot;
-              var img = response.Poster;
-              $("#movie-view").text(JSON.stringify(response));
+              var imgURL = response.Poster;
+
+              // Creates a the information to displayed into a variable
+              var image = $("<img>").attr("src", imgURL);
+              var titleP = $("<h4>").text("Title: " + title);
+              var yearP = $("<p>").text("Year: " + year);
+              var runTimeP = $("<p>").text("Runtime: " + runTime);
+              var genreP = $("<p>").text("Genre: " + genre);
+              var actorsP = $("<p>").text("Actors: " + actors);
+              var plotP = $("<p>").text("Plot: " + plot);
+
+              // Displays the information into the movie div
+              $("#movie-view").append(image);
+              $("#movie-view").append(titleP);
+              $("#movie-view").append(plotP);
+              $("#movie-view").append(actorsP);
+              $("#movie-view").append(genreP);
+              $("#movie-view").append(runTimeP);
+              $("#movie-view").append(yearP);
             });
           });
         </script>
       </div>
     </div>
     <!-- JSON contents goes here -->
-    <div id="movie-view"></div>
+
+    <div id="movie-view" class=" center   card-panel"></div>
   </body>
 </html>
