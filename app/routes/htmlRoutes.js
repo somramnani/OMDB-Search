@@ -30,8 +30,12 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "/../public/images/movie3.jpg"));
   });
   app.get("/localmovies", function(req, res) {
-    res.sendFile(path.join(__dirname, "/../public/images/local_movies.jpg"));
+    res.sendFile(path.join(__dirname, "/../public/images/local_movies.png"));
   });
+
+  app.get("/index", function(req,res){
+    res.sendFile(path.join(__dirname, "/../public/javascript/index.js"))
+  })
 
   // If no matching route is found default to home
   app.get("*", function(req, res) {

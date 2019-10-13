@@ -2,6 +2,7 @@ html {
   scroll-behavior: smooth;
   height: 100%;
   font-family: "Patua One", cursive;
+  background-color: black;
 }
 
 .top {
@@ -37,4 +38,15 @@ html {
 }
 #movie-view {
   height: 750px;
+}
+
+.displaynone {
+  display: none;
+}
+
+.movie-img {
+  height: 474px;
+}
+.card {
+  height: 700px;
 }

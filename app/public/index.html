@@ -43,7 +43,7 @@
             OMDB
           </a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/">HOME</a></li>
+            <li><a class="active" href="/">HOME</a></li>
             <li><a href="">FAVORITES</a></li>
           </ul>
         </div>
@@ -76,59 +76,65 @@
             <i class="material-icons right">send</i>
           </button>
         </form>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">
-          // This .on("click") function will trigger the AJAX Call
-          $("#find-movie").on("click", function(event) {
-            event.preventDefault();
-            $("#movie-view").html("");
-
-            // Grabs the users inpit
-            var movie = $("#movie-input").val();
-
-            var queryURL =
-              "https://www.omdbapi.com/?t=" +
-              movie +
-              "&y=&plot=short&apikey=trilogy";
-
-            $.ajax({
-              url: queryURL,
-              method: "GET"
-            }).then(function(response) {
-              // Grabs all the information from the JSON and stores it in a variable
-              var title = response.Title;
-              var year = response.Year;
-              var runTime = response.Runtime;
-              var genre = response.Genre;
-              var actors = response.Actors;
-              var plot = response.Plot;
-              var imgURL = response.Poster;
-
-              // Creates a the information to displayed into a variable
-              var image = $("<img>").attr("src", imgURL);
-              var titleP = $("<h4>").text("Title: " + title);
-              var yearP = $("<p>").text("Year: " + year);
-              var runTimeP = $("<p>").text("Runtime: " + runTime);
-              var genreP = $("<p>").text("Genre: " + genre);
-              var actorsP = $("<p>").text("Actors: " + actors);
-              var plotP = $("<p>").text("Plot: " + plot);
-
-              // Displays the information into the movie div
-              $("#movie-view").append(image);
-              $("#movie-view").append(titleP);
-              $("#movie-view").append(plotP);
-              $("#movie-view").append(actorsP);
-              $("#movie-view").append(genreP);
-              $("#movie-view").append(runTimeP);
-              $("#movie-view").append(yearP);
-            });
-          });
-        </script>
       </div>
     </div>
     <!-- JSON contents goes here -->
 
-    <div id="movie-view" class=" center   card-panel"></div>
+    <div id="movie-view" class="row"></div>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(() => {
+        // This .on("click") function will trigger the AJAX Call
+        $("#find-movie").on("click", function(event) {
+          event.preventDefault();
+          $("#movie-view").html("");
+
+          // Grabs the users inpit
+          var movie = $("#movie-input").val();
+
+          var queryURL =
+            "https://www.omdbapi.com/?s=" +
+            movie +
+            "&y=&plot=short&apikey=trilogy";
+
+          $.ajax({
+            url: queryURL,
+            method: "GET"
+          }).then(function(response) {
+            console.log(response);
+            let movies = response.Search;
+            let output = " ";
+
+            $.each(movies, (index, movie) => {
+              output += `   
+                <div class="col s12 m6 l3">
+                  <div class="card">
+                    <div class="card-image">
+                      <img class = " movie-img" src="${movie.Poster}">
+                  
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title">${movie.Title}</span>
+                      <span class="card-title"> (${movie.Year})</span>
+                      
+                    </div>
+                    <div class="card-action">
+                      <a onclick>More Info</a>
+                    </div>
+                  </div>
+                </div>
+                  
+                  `;
+            });
+            $("#movie-view").append(output);
+          });
+        });
+      });
+    </script>
   </body>
 </html>
