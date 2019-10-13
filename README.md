@@ -1,5 +1,7 @@
 # OMDB-Search
-A fullstack application that implements the OMDB API to search for movies.
+A fullstack application that implements the OMDB API where users can search for movies.
+
+![](app/public/images/homescreen.PNG)
 
 ## Languages/ Technology 
 - HTML
