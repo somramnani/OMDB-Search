@@ -23,10 +23,18 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // Requiring our routes
 require("./routes/api-routes")(app);
 require("./routes/html-routes")(app);
+
+// checks if env is Heroku, if so, sets sequelize to utilize the database hosted on heroku
+if (process.env.DATABASE_URL) {
+  // the application is executed on Heroku ... use the postgres database
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: "postgres",
+    protocol: "postgres"
+  });
+}
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
