@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OMDB-Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/localmovies" />
+
+    <!-- 
+      MATERIALIZE CDN 
+    -->
+    <!---------------------------------------------------------------------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!---------------------------------------------------------------------------------------------->
+    <!-- 
+      GOOGLE FONTS 
+    -->
+    <!---------------------------------------------------------------------------------------------->
+    <link
+      href="https://fonts.googleapis.com/css?family=Patua+One&display=swap"
+      rel="stylesheet"
+    />
+    <!---------------------------------------------------------------------------------------------->
+    <link href="stylesheets/styles.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper black">
+          <a href="#" class="brand-logo">
+            <i class="material-icons">movie</i>
+            OMDB
+          </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="active" href="/signup">SIGNUP</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class=" forms">
+          <div class="" id="login_div" method="post">
+            <h2 class="center-align">Login</h2>
+            <form class="login ">
+              <div class="form-group input-field ">
+                <input type="email" class="form-control" id="email-input" />
+                <label for="exampleInputEmail1">Email </label>
+              </div>
+              <div class="form-group passwordinput input-field ">
+                <input
+                  type="password"
+                  class="form-control "
+                  id="password-input"
+                />
+                <label for="exampleInputPassword1">Password</label>
+              </div>
+              <button
+                type="submit"
+                class="waves-effect waves-light btn grey lighten-3 black-text"
+              >
+                Login
+              </button>
+            </form>
+            <br />
+            <p>Or sign up <a href="/signup">here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+  </body>
+</html>

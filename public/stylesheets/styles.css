@@ -2,7 +2,23 @@ html {
   scroll-behavior: smooth;
   height: 100%;
   font-family: "Patua One", cursive;
+}
+.memebers-body {
   background-color: black;
+}
+
+nav {
+  font-family: "Patua One", cursive;
+}
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+
+.forms {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 
 .top {
