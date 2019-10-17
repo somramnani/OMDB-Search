@@ -11,6 +11,7 @@ A fullstack application that implements the OMDB API where users can search for 
 - Materialize
 - API
   - OMDB
+- Passport 
  
  ##
   
