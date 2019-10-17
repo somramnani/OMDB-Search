@@ -16,7 +16,7 @@ A fullstack application that implements the OMDB API where users can search for 
  
  ##
   
-  ![](app/public/images/homescreen.PNG)
-  ![](app/public/images/searchresults.PNG)
+  ![](public/images/homescreen.PNG)
+  ![](public/images/searchresults.PNG)
 
 
