@@ -1,7 +1,6 @@
 var path = require("path");
-// Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
-//
+
 module.exports = function(app) {
   //HTML ROUTES
   app.get("/", function(req, res) {
@@ -28,7 +27,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
   //
-  // Here we've add our isAuthenticated middleware to this route.
+
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
@@ -45,5 +44,9 @@ module.exports = function(app) {
   });
   app.get("/localmovies", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/images/local_movies.png"));
+  });
+
+  app.get("/curtains", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/images/curtains.jpg"));
   });
 };

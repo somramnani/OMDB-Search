@@ -1,13 +1,11 @@
-// Requiring necessary npm packages
 var express = require("express");
 var bodyParser = require("body-parser");
 var session = require("express-session");
-
-// Requiring passport as we've configured it
 var passport = require("./config/passport");
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
+
 var db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
@@ -16,7 +14,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-// We need to use sessions to keep track of our user's login status
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
@@ -27,9 +24,8 @@ app.use(passport.session());
 require("./routes/api-routes")(app);
 require("./routes/html-routes")(app);
 
-// checks if env is Heroku, if so, sets sequelize to utilize the database hosted on heroku
+// Checks if env is Heroku, if so, sets sequelize to utilize the database hosted on heroku
 if (process.env.DATABASE_URL) {
-  // the application is executed on Heroku ... use the postgres database
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: "postgres",
     protocol: "postgres"

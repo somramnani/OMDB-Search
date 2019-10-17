@@ -3,6 +3,7 @@ html {
   height: 100%;
   font-family: "Patua One", cursive;
 }
+
 .memebers-body {
   background-color: black;
 }
@@ -31,6 +32,16 @@ form.login {
   background-image: url("/movie");
   width: 100%;
 }
+.login-signup-body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  opacity: 1;
+  background-image: url("/curtains");
+  width: 100%;
+}
 
 #movie-input {
   color: white;
@@ -42,6 +53,10 @@ form.login {
   color: white;
   letter-spacing: 20px;
   padding-bottom: 40px;
+}
+
+.login-signup-title {
+  color: white;
 }
 #find-move {
   font-family: "Patua One", cursive;
