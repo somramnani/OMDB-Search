@@ -12,6 +12,7 @@ A fullstack application that implements the OMDB API where users can search for 
 - API
   - OMDB
 - Passport 
+- Sequalize
  
  ##
   
