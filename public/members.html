@@ -112,32 +112,45 @@
             console.log(response);
             let movies = response.Search;
             let output = " ";
+            let movieTitle;
+            let call;
 
             $.each(movies, (index, movie) => {
               let imdbLink = "https://www.imdb.com/title/" + movie.imdbID;
-              output += `   
+              output += `
                 <div class="col s12 m6 l3">
                   <div class="card">
                     <div class="card-image">
                       <img class = "movie-img" src="${movie.Poster}">
-                      <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                  
+                      <a" class=" favorite btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+
                     </div>
-                    <div class="card-content">
-                      <span class="card-title">${movie.Title}</span>
+                    <div class="card-content cardinfo" id ="cardinfo">
+                      <span id = "${"title" + index}" class="card-title">
+                        ${movie.Title}
+                      </span>
                       <span class="card-title"> (${movie.Year})</span>
-                      
-                      
+
                     </div>
                     <div class="card-action">
                       <a href = "${imdbLink}" target = "__blank" >More Info</a>
+
                     </div>
                   </div>
                 </div>
-                  
                   `;
+              movieTitle = $("#title" + index);
+
+              call = function() {
+                console.log(movieTitle);
+              };
             });
             $("#movie-view").append(output);
+
+            $(".favorite").on("click", function(event) {
+              event.preventDefault();
+              return call();
+            });
           });
         });
       });

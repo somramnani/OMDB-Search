@@ -2,6 +2,9 @@ var db = require("../models");
 var passport = require("../config/passport");
 //
 module.exports = function(app) {
+  // =============================================================
+  // LOGIN/ SIGNUP ROUTES
+  // =============================================================
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
@@ -42,5 +45,57 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
+  });
+  // =============================================================
+
+  // =============================================================
+  //POSTING ROUTES
+  // =============================================================
+  // GET route for getting all of the movie posts
+  app.get("/api/posts/", function(req, res) {
+    // Finds all posts, and returns them to the user with res.json
+    db.Post.findAll({}).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+  // Get route for retrieving a single movie post
+  app.get("/api/posts/:id", function(req, res) {
+    //Sequelize code to find a single post where the id is equal to req.params.id,
+    db.Post.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbPost) {
+      // returns the result to the user with res.json
+      res.json(dbPost);
+    });
+  });
+
+  // POST route for saving a new post
+  app.post("/api/posts", function(req, res) {
+    // Sequelize code for creating a post using req.body,
+    console.log(req.body);
+
+    db.Post.create({
+      title: req.body.title
+    }).then(function(dbPost) {
+      // Returns the result using res.json
+      res.json(dbPost);
+    });
+  });
+
+  // DELETE route for deleting posts
+  app.delete("/api/posts/:id", function(req, res) {
+    // Sequelize code to delete a post where the id is equal to req.params.id,
+
+    db.Post.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbPost) {
+      //Returns the result to the user using res.json
+      res.json(dbPost);
+    });
   });
 };
