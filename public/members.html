@@ -117,16 +117,18 @@
 
             $.each(movies, (index, movie) => {
               let imdbLink = "https://www.imdb.com/title/" + movie.imdbID;
+
               output += `
-                <div class="col s12 m6 l3">
+                <div class="col s12 m6 l3 cards">
                   <div class="card">
                     <div class="card-image">
                       <img class = "movie-img" src="${movie.Poster}">
-                      <a" class=" favorite btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                      <a  class=" favorite btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
 
                     </div>
                     <div class="card-content cardinfo" id ="cardinfo">
-                      <span id = "${"title" + index}" class="card-title">
+                      <span value =  ${movie.Title}  id = "${"title" +
+                index}" class="card-title cardtitle">
                         ${movie.Title}
                       </span>
                       <span class="card-title"> (${movie.Year})</span>
@@ -139,10 +141,10 @@
                   </div>
                 </div>
                   `;
-              movieTitle = $("#title" + index);
+              movieTitle += $("#title" + index);
 
               call = function() {
-                console.log(movieTitle);
+                alert(movie.Title);
               };
             });
             $("#movie-view").append(output);
