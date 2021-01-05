@@ -1,20 +1,24 @@
 # OMDB-Search
 A fullstack application that implements the OMDB API where users can search for movies.
 
+## Table of contents
+- [&#x1f527; Technologies & Tools](#key-technology--tools)
+- [:framed_picture: Images](#framed_picture-images)
 
-
-## Languages/ Technology 
+## &#x1f527; Key Technology & Tools
 - HTML
 - CSS
-- JavaScript
-- Express
 - Materialize
+- JavaScript
+  - Handlebars.js
+  - Node.js
+  - Express.js
+  - Passport.js
+  - Sequalize
 - API
   - OMDB
-- Passport 
-- Sequalize
- 
- ##
+
+## :framed_picture: Images
   
   ![](public/images/homescreen.PNG)
   ![](public/images/searchresults.PNG)
